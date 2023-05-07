@@ -48,8 +48,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
-      appBar: _buildAppbar(context),
-      body: _buildBody(),
+      // appBar: _buildAppbar(context),
+      body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/wallpaper.jpg'),
+                  fit: BoxFit.cover)),
+          child: _buildBody()),
     );
   }
 
@@ -71,7 +76,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Widget _buildSearchbar() {
     return Material(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(8),
       elevation: 6,
       child: TextField(
         onChanged: (value) {
@@ -97,7 +102,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             style: TextStyle(fontSize: 22),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
       ),
@@ -106,6 +111,40 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Widget _buildWeatherWidget() {
     var textStyle = const TextStyle(fontSize: 24, color: Colors.white);
+    var textStylesmall = const TextStyle(fontSize: 16, color: Colors.white);
+
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              '$temperature degrees',
+              style: textStyle,
+            ),
+            const Icon(
+              Icons.cloud,
+              size: 40,
+              color: Colors.white,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              'feels like',
+              style: textStylesmall,
+            ),
+            Text(
+              'mostly cloudy',
+              style: textStylesmall,
+            )
+          ],
+        ),
+      ],
+    );
+
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
