@@ -44,17 +44,49 @@ class _WeatherScreenState extends State<WeatherScreen> {
   double? temperature;
   String city = '';
 
+  int first = 1;
+  int second = 2;
+
+  printValues() {
+    print('first: $first');
+    print('second: $second');
+    print('-------------------------------------------');
+  }
+
+  functionWithoutReturn() {
+    first = 2;
+  }
+
+  int functionWithReturn() {
+    return 123;
+  }
+
+  int addNumbers(int a, int b) {
+    return a + b;
+  }
+
   @override
   Widget build(BuildContext context) {
+    printValues();
+    first = 3;
+    printValues();
+    functionWithoutReturn();
+    printValues();
+    first = functionWithReturn();
+
+    // second = addNumbers(first, second);
+
+    printValues();
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       // appBar: _buildAppbar(context),
-      body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/wallpaper.jpg'),
-                  fit: BoxFit.cover)),
-          child: _buildBody()),
+      // body: Container(
+      //     decoration: BoxDecoration(
+      //         image: DecorationImage(
+      //             image: AssetImage('assets/wallpaper.jpg'),
+      //             fit: BoxFit.cover)),
+      //     child: _buildBody()),
     );
   }
 
